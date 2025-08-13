@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"projectweb/views"
@@ -42,4 +43,8 @@ func main() {
 	r.MethodNotAllowed(func(w http.ResponseWriter, r *http.Request) {
 		views.Unautorize().Render(r.Context(), w)
 	})
+
+	fmt.Printf("Web bisa diakses di http://localhost%s", PORT)
+
+	http.ListenAndServe(PORT, r)
 }
